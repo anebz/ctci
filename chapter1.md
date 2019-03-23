@@ -85,4 +85,49 @@ With `ArrayList`s, when they reach full capacity, the class creates a new array 
 * If the array is full and contains N elements, adding a new element takes O(N) time because we have to create a new array of size 2N and then copy N elements over, O(2N + N) = O(3N) = O(N).
 * But most of the times the `ArrayList` won't be full, and adding a new element will take O(1).
 
-In the worst case it takes O(N), but in N-1 cases it takes O(1). Once the worst case happens, it won't happen again for so long that the cost is "amortized". If we add X elements to the `ArrayList`, it takes ~2X --> X adds take O(X) time, the amortized time for each adding is O(1). 
+In the worst case it takes O(N), but in N-1 cases it takes O(1). Once the worst case happens, it won't happen again for so long that the cost is "amortized". If we add X elements to the `ArrayList`, it takes ~2X --> X adds take O(X) time, the amortized time for each adding is O(1).
+
+### 1.7. Log(N) runtimes
+
+In binary search, the number of elements in the problem space gets halved each time. Or, starting from 1, is multiplied k times until reaching N. 2<sup>k</sup>=N -> k=log<sub>2</sub>N, so O(log(N)) runtime.
+
+### 1.8. Recursive runtimes
+
+```c
+int f(int n) {
+    if(n <= 1) {
+        return 1;
+    }
+    return f(n-1) + f(n-1);
+}
+```
+
+The tree has depth of 4, and 2 branches, each node has 2 children: `f(n-1) + f(n-1)`. Each level has twice as many calls as the one above it: 2<sup>0</sup> + 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 1.
+
+When having a recursive function making multiple calls, the runtime is often (not always!) O(branches<sup>depth</sup>), where branches is the number of times each recursive call branches. In this case, the runtime is O(2<sup>N</sup>) and the space complexity O(N), because even if there are O(2<sup>N</sup>) nodes in the tree total, there are only O(N) at a given time.
+
+### 1.9. Examples and exercises
+
+p45 - p58.
+
+```c
+int factorial(int n) { /* example 11 */
+    if (n < 0) return -1;
+    if (n == 0) return 1;
+    return n * factorial(n-1);
+}
+```
+
+The two `if` conditions take O(1) time, otherwise it's a straight recursion from n to n-1, ..., 1. O(n) time.
+
+```c
+int fib(int n) { /* example 13 */
+    if (n <= 0) return 0;
+    if (n == 1) return 1;
+    return fib(n-1) + fib(n-2); // 2 branches
+}
+```
+
+2 branches and depth of 4, so O(2<sup>n</sup>). Being more precise, most of the nodes at the bottom of the call stack/tree, there is only one call. This single vs. double call makes a big difference, the runtime is actually closer to O(1.6<sup>n</sup>).
+
+In general, if there are multiple recursive calls, the runtime is exponential.
