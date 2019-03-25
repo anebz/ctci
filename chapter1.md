@@ -57,7 +57,7 @@ O(N^2 + N) = O(N^2)
 
 In an algorithm with two steps, when to multiply runtimes and when to add?
 
-* Add runtime: do A chinks of work, then B chunks of work
+* Add runtime: do A chunks of work, then B chunks of work
 
 ```c
 for(int a: arrA) {
@@ -131,3 +131,60 @@ int fib(int n) { /* example 13 */
 2 branches and depth of 4, so O(2<sup>n</sup>). Being more precise, most of the nodes at the bottom of the call stack/tree, there is only one call. This single vs. double call makes a big difference, the runtime is actually closer to O(1.6<sup>n</sup>).
 
 In general, if there are multiple recursive calls, the runtime is exponential.
+
+```c
+void allFib(int n) { /* example 14 */
+    for(int i = 0; i < n; i++) {
+        cout << i + ": " + fib(i) << endl;
+    }
+}
+
+int fib(int n) {
+    if (n <= 0) return 0;
+    if (n == 1) return 1;
+    return fib(n-1) + fib(n-2); // 2 branches
+}
+```
+
+The for loop is O(n), so multiplied by the time complexity of fib(n), which is 2<sup>n</sup>. Right? But we don't always access fib(n) with the same number, `i` is changing.
+
+* fib(1) -> 2<sup>1</sup> steps
+* fib(2) -> 2<sup>2</sup> steps
+* fib(3) -> 2<sup>3</sup> steps
+* fib(4) -> 2<sup>4</sup> steps
+* ...
+* fib(n) -> 2<sup>n</sup> steps
+
+And we know that 2<sup>0</sup> + 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 1, so our secuence 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 2. So time complexity is O(2<sup>N</sup>).
+
+What if we cache values? Also called memoization.
+
+```c
+void allFib(int n) { /* example 15 */
+    int[] memo = new int[n + 1];
+    for(int i = 0; i < n; i++) {
+        cout << i + ": " + fib(i, memo) << endl;
+    }
+}
+
+int fib(int n, int[] memo) {
+    if (n <= 0) return 0;
+    if (n == 1) return 1;
+    if (memo[n] > 0) return memo[n];
+
+    memo[n] = fib(n-1, memo) + fib(n-2, memo);
+    return memo[n]
+}
+```
+
+For each value, we look for `fib(n-1)` and `fib(n-2)`, which are already stored. We do a constant amount of work for each element, so O(n).
+
+**Binary search tree**: a node-based binary tree data structure which has the following properties:
+
+* The left subtree of a node contains only nodes with keys lesser than the node’s key.
+* The right subtree of a node contains only nodes with keys greater than the node’s key.
+* The left and right subtree each must also be a binary search tree. 
+
+![im](https://media.geeksforgeeks.org/wp-content/uploads/BSTSearch.png)
+
+Search in unbalanced binary search trees, or just binary trees is O(n). We might have to search through all the nodes.
