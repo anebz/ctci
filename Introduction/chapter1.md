@@ -304,8 +304,18 @@ The best runtime you could ever conceive, where there is no way to beat BCR. If 
 
 Start with a brute force solution, compare it with BCR, find a middle-point algorithm, for example O(logN) -> O(1). Try to think of optimizations from BUD section. Anything we do that's less or equal than BCR is 'free', it doesn't affect runtime. If we reach BCR, there's no more optimization to be done in runtime. We can focus on space complexity. In the example in p74, the algorithm with O(N) runtime also had O(N) space complexity. Improving that means O(logN) or O(1). Consider algorithms that have O(1) space, and optimize based on runtime.
 
-If you've reached BCR and have O(1) additional space, you can't optimize big O time or space. 
+If you've reached BCR and have O(1) additional space, you can't optimize big O time or space.
 
+### 1.2.3. What good coding looks like
+
+* correct
+* efficient, time and space
+* simple/short
+* readable, comments when necessary
+* maintainable, using classes for example
+* modular, separate isolated chunks of code into their own methods
+* flexible and robus, generalize for NxN instead of 3x3 in tic-tac-toe.
+* error checking, don't assume input data type. validate the input with 'assert' or if statements
 
 ## General resources
 
