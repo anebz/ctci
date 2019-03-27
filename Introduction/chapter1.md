@@ -128,7 +128,7 @@ int fib(int n) { /* example 13 */
 }
 ```
 
-2 branches and depth of 4, so O(2<sup>n</sup>). Being more precise, most of the nodes at the bottom of the call stack/tree, there is only one call. This single vs. double call makes a big difference, the runtime is actually closer to O(1.6<sup>n</sup>).
+2 branches and depth of 4, so O(2<sup>n</sup>). Being more precise, most of the nodes at the bottom of the call stack/tree, there is only one call. This single vs. double call makes a big difference, the runtime is closer to O(1.6<sup>n</sup>).
 
 In general, if there are multiple recursive calls, the runtime is exponential.
 
@@ -155,7 +155,7 @@ The for loop is O(n), so multiplied by the time complexity of fib(n), which is 2
 * ...
 * fib(n) -> 2<sup>n</sup> steps
 
-And we know that 2<sup>0</sup> + 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 1, so our secuence 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 2. So time complexity is O(2<sup>N</sup>).
+And we know that 2<sup>0</sup> + 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 1, so our sequence 2<sup>1</sup> + ... + 2<sup>N-1</sup> = 2<sup>N</sup> - 2. So time complexity is O(2<sup>N</sup>).
 
 What if we cache values? Also called memoization.
 
@@ -244,7 +244,7 @@ A bit vector mapping every 32-bit integer to a boolean value, fits in memory on 
    1. look for unused information that the interviewer might have said, or from your input
    2. use a fresh example
    3. solve it incorrectly. solve it for some cases, not for others. and improve from there
-   4. make time vs. space tradeoff
+   4. make time vs. space trade-off
    5. precompute information: can we reorganize data (sorting, etc) or compute some values upfront that'll save time later?
    6. think about the best conceivable runtime
 5. Walk through
@@ -252,13 +252,13 @@ A bit vector mapping every 32-bit integer to a boolean value, fits in memory on 
    2. walk through the algorithm, what variables there are, when they change
 6. Implement
    1. modularized code: if you have to initialize a matrix with incremental values, write `initIncrementalMatrix(int size)` and fill the details later if needed
-   2. error checks: write a todo and explain out loud what you'd like to test
+   2. error checks: write a to-do and explain out loud what you'd like to test
    3. use other classes/structs: if you have to return a list of start and end points from a function, we can use a 2D array
    4. good variable names: you can start with `startChild()`, long name, and then abbreviate and say out loud that you'll say `sc` from then on
-7. Test: when finding bugs, carefully analyze them
-   1. start with a conceptual test, read and analyze what each line does. Does the code do what you think it should do?
-   2. double check lines that have constant numbers, `x = length - 2` or similars.
-   3. hot spots: recursive code, integer division, null nodes in binary trees, start and end of interation through a linked list...
+7. Test: when finding bugs, carefully analyse them
+   1. start with a conceptual test, read and analyse what each line does. Does the code do what you think it should do?
+   2. double check lines that have constant numbers, `x = length - 2` or similar lines.
+   3. hot spots: recursive code, integer division, null nodes in binary trees, start and end of iteration through a linked list...
    4. small test cases: use small inputs
    5. special cases: null or single element inputs, extreme cases, or other special cases
 
@@ -269,7 +269,7 @@ BUd: bottlenecks, unnecessary work, duplicated work
 * Bottleneck: part of the algorithm slowing down the overall runtime
   * one-time work that slows down runtime. if we have O(NlogN + N), it doesn't matter if we optimize the second part. the first part is the bottleneck.
   * a chunk of work done repeatedly, searching for example. maybe you can reduce it from O(N) to O(logN).
-    * for example we want to search for things in an unsorted array, we can a) sort it, or b) throw everything in the array into the hash table and look it up there (O(N)). 
+    * for example, we want to search for things in an unsorted array, we can a) sort it, or b) throw everything in the array into the hash table and look it up there (O(N)). 
 * Unnecessary work
   * break a loop when a solution is found
   * if we're looking for one value in an inner loop, derive it from the formula and check. 1 if condition instead of another loop
@@ -278,13 +278,13 @@ BUd: bottlenecks, unnecessary work, duplicated work
 
 #### 1.2.2.5. Optimize and solve technique \#2: do it yourself
 
-Try working through the problem intuitively on a real eaxmple first, sometimes we have intuitive solutions to problems such as looking for words in a dictionary -> binary search in sorted array.
+Try working through the problem intuitively on a real example first, sometimes we have intuitive solutions to problems such as looking for words in a dictionary -> binary search in sorted array.
 
 Or make a nice big example and **intuitively, manually, solve it for the specific example. and then check think about how you solved it.** Also consider optimizations you automatically made, like skipping some useless examples.
 
 #### 1.2.2.6. Optimize and solve technique \#3: simplify and generalize
 
-Implement a multi step approach:
+Implement a multi-step approach:
 
 1. simplify or tweak some constraint, such as data type
 2. solve this simplified version of the problem
@@ -306,7 +306,7 @@ Start with a brute force solution, compare it with BCR, find a middle-point algo
 
 If you've reached BCR and have O(1) additional space, you can't optimize big O time or space.
 
-### 1.2.3. What good coding looks like
+### 1.2.3. What good coding looks like:
 
 * correct
 * efficient, time and space
@@ -314,7 +314,7 @@ If you've reached BCR and have O(1) additional space, you can't optimize big O t
 * readable, comments when necessary
 * maintainable, using classes for example
 * modular, separate isolated chunks of code into their own methods
-* flexible and robus, generalize for NxN instead of 3x3 in tic-tac-toe.
+* flexible and robust, generalize for NxN instead of 3x3 in tic-tac-toe.
 * error checking, don't assume input data type. validate the input with 'assert' or if statements
 
 ## General resources
@@ -323,3 +323,4 @@ If you've reached BCR and have O(1) additional space, you can't optimize big O t
 * [Solutions to hackerrank problems](https://github.com/RodneyShag/HackerRank_solutions): algorithms, data structures, CtCI.
 * [Leetcode](https://leetcode.com/)
 * [Topcoder](https://www.topcoder.com/community/competitive-programming/tutorials/)
+
