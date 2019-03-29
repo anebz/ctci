@@ -50,6 +50,9 @@ String joinWords(String[] words) {
 }
 ```
 
-## Hackerrank exercises
+## Resources
 
-[Hackerrank string exercises](https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=strings)
+* [Hackerrank string exercises](https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=strings)
+* [Java solutions](https://github.com/careercup/CtCI-6th-Edition/tree/master/Java/Ch%2001.%20Arrays%20and%20Strings)
+* [C++ solutions](https://github.com/careercup/CtCI-6th-Edition-cpp/tree/a68ba3e1c630a4d218ff1294f3eaf5aeced449ec/Ch%201.Arrays%20And%20Strings)
+* [Python solutions](https://github.com/careercup/CtCI-6th-Edition-Python/tree/e6bc732588601d0a98e5b1bc44d83644b910978d/Chapter1)
