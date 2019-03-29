@@ -1,2 +1,5 @@
 .vscode/
 *.exe
+*.inp
+*.oac
+*.out
