@@ -42,7 +42,6 @@ def levenshtein(s1, s2):
                     return False
         return True
 
-
 class Test(unittest.TestCase):
     dataT = [("", ""), ("an", "a"), ("a", "an"), ("ane", "ae"),
              ("ane", "ne"), ("asdfgh", "asdgh"), ("asdf", "asgf")]
