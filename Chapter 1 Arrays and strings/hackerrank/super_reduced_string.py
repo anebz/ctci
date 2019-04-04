@@ -6,25 +6,23 @@ import unittest
 def reduce_string(s):
     slen = len(s)
     if slen < 2:
-        return "Empty String" if len(s) == 0 else s
+        return s if s else "Empty String"
     
     i = 0
-    count = 0
+    count = False
     while slen > 1 and i < slen - 1:
         if s[i] == s[i+1]:
-            count += 1
+            count = True
             
-        if count % 2 == 1:
-            s = s.replace(s[i] * (count+1), '')
-            i -= count + 1
-            if i < -1:
-                i = -1
+        if count:
+            s = s.replace(s[i] * 2, '')
+            i = max(i-2, -1)
             slen = len(s)
-            count = 0
+            count = False
             
         i += 1
     
-    return "Empty String" if len(s) == 0 else s
+    return s if s else "Empty String"
     
 class Test(unittest.TestCase):
     
