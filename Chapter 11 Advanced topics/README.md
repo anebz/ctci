@@ -21,3 +21,11 @@ Another issue called *clustering*, a hash table with an underlying array of size
 ### 11.4.4. Quadratic probing and double hashing
 
 The distance between probes doesn't have to be linear, it can be quadratic, or use another hash function to determine the probe distance.
+
+## 11.5. Rabin-Karp substring search
+
+Searching for a substring S in a bigger string B, brute force approach takes O(s(b-s)) time, by searching through the first b - s + 1 characters in B and for ech, checking if the next s characters match S.
+
+If two strings are the same, they must have the same hash. But it's also possible for two different strings to have the same hash. If we efficiently precompute a hash value for each sequence of s characters within B, we can find the location of S in O(b) time. For example, hash function is sum of each character. The substring S has value of 24 for example. We go through the string B, check how many times the sum of characters is 24, and check which one (if any) are indeed equal to S.
+
+How to compute the hash value? If we calculate hash value of each substring, that still takes O(s(b-s)). Instead, we know that hash(s[1:4]) = hash(s[:3]) - code(s[0]) + code(s[4]). This takes O(b) time.

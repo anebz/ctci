@@ -10,3 +10,17 @@
 * check unique characters
 * check if permutation
 * replace character by substring
+* Levenshtein distance
+* String compression
+* Matrix rotation
+* String rotation
+* Hash tables (chapter 7)
+* Magic index (chapter 8)
+
+## Chapter 7 Object-oriented design
+
+* Hash tables
+
+## Chapter 8 Recursion
+
+* Magic index
