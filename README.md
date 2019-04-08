@@ -24,3 +24,7 @@
 ## Chapter 8 Recursion
 
 * Magic index
+
+## Chapter 10 Sorting and searching
+
+* Sorted matrix search
