@@ -16,6 +16,7 @@
 * String rotation
 * Hash tables (chapter 7)
 * Magic index (chapter 8)
+* Search in sorted matrix (chapter 10)
 
 ## Chapter 7 Object-oriented design
 
