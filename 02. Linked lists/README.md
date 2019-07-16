@@ -26,7 +26,7 @@ class Node {
 }
 
 Node a = new Node(5);
-Node b = new Node (7);
+Node b = new Node(7);
 a.appendTotail(b);
 ```
 
