@@ -60,9 +60,9 @@ Node deleteNode(Node head, int d){
 
 Sometimes two pointers are used, you iterate through the linked list with two pointers simultaneously, with one ahead of the other. The fast pointer might be ahead by a fixed amount, or hopping multiple nodes for each node that the 'slow' node iterates through.
 
-If we have a linked list a1 -> a2 -> an -> b1 -> b2 -> bn and we want to rearrange it to a1 -> b1 -> a2 -> b2 ..., and we don't know how long the list is but we know its length is an even number, we could have one pointer p1 move every two elements for every one move that p2 does. When p1 reaches the end of the list, p2 will be at midpoint. Then, move p1 back to the front and on each iteration, p2 selects an element and inserts if after p1.
+If we have a linked list a1 -> a2 -> an -> b1 -> b2 -> bn and we want to rearrange it to a1 -> b1 -> a2 -> b2 ..., and we don't know how long the list is but we know its length is an even number, we could have one pointer p1 move every two elements for every one move that p2 does. When p1 reaches the end of the list, p2 will be at midpoint. Then, move p1 back to the front and on each iteration, p2 selects an element and inserts it after p1.
 
-> Question: then why do we iterate to the end bzw midpoint of the list? Just start rearranging from the very beginning.
+> Question: then why do we iterate to the end bzw midpoint of the list? Just start rearranging from the very beginning. But we need p2 to reach the end, still that can be done with just p2, no need to move p1 as well.
 
 ## Recursive problems
 

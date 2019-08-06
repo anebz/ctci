@@ -18,6 +18,15 @@
 * Magic index (chapter 8)
 * Search in sorted matrix (chapter 10)
 
+## Chapter 2 Linked lists
+
+* Remove duplicates
+* Return kth to last
+* Delete middle node
+* Partition list
+* Sum lists
+* Check if palindrome
+
 ## Chapter 7 Object-oriented design
 
 * Hash tables
