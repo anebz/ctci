@@ -26,6 +26,11 @@
 * Partition list
 * Sum lists
 * Check if palindrome
+* List intersection
+* Loop detection
+* Insert node at beginning
+* Insert node at end
+* Reverse list, single and double linked
 
 ## Chapter 7 Object-oriented design
 
