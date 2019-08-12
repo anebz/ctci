@@ -67,14 +67,14 @@ public class Solution {
      */
     static DoublyLinkedListNode reverse(DoublyLinkedListNode head) {
 
-        if (head == null) return null;
-        head.prev = head.next;
-        head.next = null;
-        while (head.prev != null){
-            head = head.prev;
-            DoublyLinkedListNode temp = head.next;
-            head.next = head.prev;
-            head.prev = temp;
+        while (head != null) {
+            DoublyLinkedListNode temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+        if(temp != null){
+            head = temp.prev;
         }
         return head;
     }
