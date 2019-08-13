@@ -8,43 +8,39 @@ import java.util.regex.*;
 
 public class Solution {
 
-    static class DoublyLinkedListNode {
+    static class SinglyLinkedListNode {
         public int data;
-        public DoublyLinkedListNode next;
-        public DoublyLinkedListNode prev;
+        public SinglyLinkedListNode next;
 
-        public DoublyLinkedListNode(int nodeData) {
+        public SinglyLinkedListNode(int nodeData) {
             this.data = nodeData;
             this.next = null;
-            this.prev = null;
         }
     }
 
-    static class DoublyLinkedList {
-        public DoublyLinkedListNode head;
-        public DoublyLinkedListNode tail;
+    static class SinglyLinkedList {
+        public SinglyLinkedListNode head;
+        public SinglyLinkedListNode tail;
 
-        public DoublyLinkedList() {
+        public SinglyLinkedList() {
             this.head = null;
             this.tail = null;
         }
 
         public void insertNode(int nodeData) {
-            DoublyLinkedListNode node = new DoublyLinkedListNode(nodeData);
+            SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
 
             if (this.head == null) {
                 this.head = node;
             } else {
                 this.tail.next = node;
-                node.prev = this.tail;
             }
 
             this.tail = node;
         }
     }
 
-    public static void printDoublyLinkedList(DoublyLinkedListNode node, String sep, BufferedWriter bufferedWriter)
-            throws IOException {
+    public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
         while (node != null) {
             bufferedWriter.write(String.valueOf(node.data));
 
@@ -61,22 +57,21 @@ public class Solution {
     /*
      * For your reference:
      *
-     * DoublyLinkedListNode { int data; DoublyLinkedListNode next;
-     * DoublyLinkedListNode prev; }
+     * SinglyLinkedListNode {
+     *     int data;
+     *     SinglyLinkedListNode next;
+     * }
      *
      */
-    static DoublyLinkedListNode reverse(DoublyLinkedListNode head) {
-
+    static SinglyLinkedListNode reverse(SinglyLinkedListNode head) {
+        SinglyLinkedListNode tail = null;
         while (head != null) {
-            DoublyLinkedListNode temp = head.prev;
-            head.prev = head.next;
-            head.next = temp;
-            head = head.prev;
+            SinglyLinkedListNode next = head.next;
+            head.next = tail;
+            tail = head;
+            head = next;
         }
-        if(temp != null){
-            head = temp.prev;
-        }
-        return head;
+        return tail;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -84,11 +79,11 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int t = scanner.nextInt();
+        int tests = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        for (int tItr = 0; tItr < t; tItr++) {
-            DoublyLinkedList llist = new DoublyLinkedList();
+        for (int testsItr = 0; testsItr < tests; testsItr++) {
+            SinglyLinkedList llist = new SinglyLinkedList();
 
             int llistCount = scanner.nextInt();
             scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -100,9 +95,9 @@ public class Solution {
                 llist.insertNode(llistItem);
             }
 
-            DoublyLinkedListNode llist1 = reverse(llist.head);
+            SinglyLinkedListNode llist1 = reverse(llist.head);
 
-            printDoublyLinkedList(llist1, " ", bufferedWriter);
+            printSinglyLinkedList(llist1, " ", bufferedWriter);
             bufferedWriter.newLine();
         }
 
