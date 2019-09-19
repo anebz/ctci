@@ -1,5 +1,7 @@
 # Cracking the coding interview exercises and notes
 
+If you can't afford to buy the book, you can find a free pdf [here](https://leonmercanti.com/books/personal-development/Cracking%20the%20Coding%20Interview%20189%20Programming%20Questions%20and%20Solutions.pdf).
+
 ## Introduction
 
 1. Big O
@@ -26,11 +28,11 @@
 * Partition list
 * Sum lists
 * Check if palindrome
-* List intersection
-* Loop detection
 * Insert node at beginning
 * Insert node at end
 * Reverse list, single and double linked
+* List intersection
+* Loop detection
 
 ## Chapter 7 Object-oriented design
 
@@ -38,8 +40,14 @@
 
 ## Chapter 8 Recursion
 
-* Magic index
+* Magic index (index such that A[i] = 1)
 
 ## Chapter 10 Sorting and searching
 
 * Sorted matrix search
+
+## Chapter 16 Moderate problems
+
+* Write an integer in english
+* Contiguous sequence or Maximum subarray
+* Least Recently Used cache
