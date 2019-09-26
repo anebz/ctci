@@ -104,3 +104,74 @@ void inOrderTransversal(TreeNode node) {
     }
 }
 ```
+
+### 2.2. Pre-order transversal
+
+Visits the current node **before** its child nodes.
+
+```java
+void inOrderTransversal(TreeNode node) {
+    if (node != null) {
+        visit(node);
+        inOrderTransversal(node.left);
+        inOrderTransversal(node.right);
+    }
+}
+```
+
+### 2.3. Post-order transversal
+
+Visits the current node **after** its child nodes. The root node is always the last node visited.
+
+```java
+void inOrderTransversal(TreeNode node) {
+    if (node != null) {
+        inOrderTransversal(node.left);
+        inOrderTransversal(node.right);
+        visit(node);
+    }
+}
+```
+
+## 3. Binary heaps (min-heaps and max-heaps)
+
+Max-heap is just min-heap but with the elements in descending order rather than ascending.
+
+A min-heap is a complete binary tree, totally filled other than the rightmost elements on the last level, where each node is smaller than its children. The root, therefore, is the minimum element in the tree.
+
+* 4
+  * 50
+    * 55
+    * 90
+  * 7
+    * 87
+
+There are two key operations in min-heap, `insert` and `extract_min`.
+
+### 3.1. Insert
+
+We always start by inserting the element at the bottom. We insert at the rightmost spot so as to maintain the complete tree property. Then, we 'fix' the tree by swapping the new element with its parent, until we find an appropriate sport for it. We bubble up the minimum element. This takes O(logn), where n = number of nodes in the heap.
+
+![Insert in a min heap](img/minheap_insert.png)
+
+### 3.2. Extract minimum element
+
+The minimum element at a min-heap is always at the top. Another matter is how to remove it. First, we remove the min element and swap it with the last element in the heap (the bottonmost, rightmost elem). Then, we bubble down this element, swapping it with one of its children until the min-heap property is restored.
+
+Do we swap it with the left child or the right one? Depending on their values, there's no inherent ordering between the left and right elem, but we need to take the smaller one in order to maintain the min-heap ordering. This also takes O(logn) time.
+
+![extract in a min heap](img/minheap_extractmin.png)
+
+## 4. Tries (prefix trees)
+
+A trie is a variant of an n-ary tree in which characters are stored at each node, and each path down the tree might represent a word. The \* nodes, sometimes called 'null nodes', are often used to indicate complete words. If there's a \* node under 'MANY', it means that 'MANY' is a complete word.
+
+The actual implementation of these * nodes can be a special type of child, like `TerminatingTrieNode`, which inherits from `TrieNode`, or a boolean flag `terminates` within the parent node.
+
+A node in a trie can have anywhere from 1 through `alphabet_size + 1` children.
+
+![trie](img/trie.png)
+
+Commonly, a trie is used to store the entire (english) language for quick prefix lookups. While a hash table can quickly look up whether a string is a valid word, it can't tell if a string is a prefix of any valid words.
+
+> A trie can check if a string is a valid prefix in O(k) time, where `k` is the length of the string, which is the same as the hash table lookup.
