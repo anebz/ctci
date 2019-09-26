@@ -170,8 +170,18 @@ The actual implementation of these * nodes can be a special type of child, like 
 
 A node in a trie can have anywhere from 1 through `alphabet_size + 1` children.
 
-![trie](img/trie.png)
+![trie](img/trie.png){width=300}
 
 Commonly, a trie is used to store the entire (english) language for quick prefix lookups. While a hash table can quickly look up whether a string is a valid word, it can't tell if a string is a prefix of any valid words.
 
 > A trie can check if a string is a valid prefix in O(k) time, where `k` is the length of the string, which is the same as the hash table lookup.
+
+## 5. Graphs
+
+A tree is a type of graph, but not all graphs are trees. A tree is a connected graph without cycles. A graph is simply a collection of nodes with edges between (some of) them.
+
+* Graphs can be either directed (one-way) or undirected (two-way street)
+* The graph can have multiple isolated subgraphs. If there's a path between every pair of vertices, it's called a 'connected graph'
+* The graph can also have cycles. If it doesn't, it's called 'acyclic'
+
+![graph](img/graph.png){width=300}
