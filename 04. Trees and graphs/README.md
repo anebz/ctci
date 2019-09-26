@@ -152,7 +152,7 @@ There are two key operations in min-heap, `insert` and `extract_min`.
 
 We always start by inserting the element at the bottom. We insert at the rightmost spot so as to maintain the complete tree property. Then, we 'fix' the tree by swapping the new element with its parent, until we find an appropriate sport for it. We bubble up the minimum element. This takes O(logn), where n = number of nodes in the heap.
 
-![Insert in a min heap](img/minheap_insert.png)
+![Insert in a min heap](img/minheap_insert.png){width="600"}
 
 ### 3.2. Extract minimum element
 
@@ -160,7 +160,7 @@ The minimum element at a min-heap is always at the top. Another matter is how to
 
 Do we swap it with the left child or the right one? Depending on their values, there's no inherent ordering between the left and right elem, but we need to take the smaller one in order to maintain the min-heap ordering. This also takes O(logn) time.
 
-![extract in a min heap](img/minheap_extractmin.png)
+![extract in a min heap](img/minheap_extractmin.png){width="600"}
 
 ## 4. Tries (prefix trees)
 
@@ -170,7 +170,7 @@ The actual implementation of these * nodes can be a special type of child, like 
 
 A node in a trie can have anywhere from 1 through `alphabet_size + 1` children.
 
-![trie](img/trie.png | width=300)
+![trie](img/trie.png){width="300"}
 
 Commonly, a trie is used to store the entire (english) language for quick prefix lookups. While a hash table can quickly look up whether a string is a valid word, it can't tell if a string is a prefix of any valid words.
 
@@ -184,4 +184,4 @@ A tree is a type of graph, but not all graphs are trees. A tree is a connected g
 * The graph can have multiple isolated subgraphs. If there's a path between every pair of vertices, it's called a 'connected graph'
 * The graph can also have cycles. If it doesn't, it's called 'acyclic'
 
-![graph](img/graph.png | width=300)
+![graph](img/graph.png){width="300"}
