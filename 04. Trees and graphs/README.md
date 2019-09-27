@@ -225,3 +225,66 @@ The same graph algorithms that are used on adjacency lists (breadh-first search,
 
 * In the list representation, you can easily iterate through the neighbors of a node
 * In the matrix representation, you need to iterate through all the nodes to identify a node's neighbors
+
+## 6. Graph search
+
+The two most common ways to search a graph are depth-first search and breadth-first search. In DFS, we start at the root (or another arbitrarily selected node) and explore each branch completely before moving on to the next branch. We go deep first.
+
+In BFS, we start at the root (or another arbitrarily selected node) and explore each neighbor before going on to any of their children. We go wide.
+
+<img src="img/graph_search1.png" width="500">
+
+DFS is better if we want to visit every node in the graph, and BFS better if we want to find the (shortest) path between two nodes.
+
+### 6.1. Depth-first search (DFS)
+
+We visit a node `a` and then iterate through each of `a`'s neighbors. When visiting a node `b` that's a neighbor of `a`, we visit all of `b`'s neighbors before going on to `a`'s other neighbors. `a` exhaustively searches `b`'s branch before any of its other neighbors.
+
+We must check if a node has been visited, otherwise we might get stuck in an infinite loop.
+
+```java
+void search(Node root) {
+    if (root == null) return;
+    visit(root);
+    root.visited = true;
+    foreach (Node n in root.adjacent) {
+        if (!n.visited) {
+            search(n);
+        }
+    }
+}
+```
+
+### 6.2. Breadh-first search (BFS)
+
+There's a false assumption that BFS is recursive, it's not, it uses a queue. In BFS, node `a` visits each of `a`'s neighbors before visiting any of *their* neighbors. It's like searching level by level out from `a`.
+
+```java
+void search(Node root) {
+    Queue queue = new Queue();
+    root.marked = true;
+    queue.enqueue(root); // add to end of queue
+
+    while (!queue.isEmpty()) {
+        Node r = queue.dequeue(); // remove from top of queue
+        visit(r);
+        foreach (Node n in r.adjacent) {
+            if (!n.marked) {
+                n.marked = true;
+                queue.enqueue(n);
+            }
+        }
+    }
+}
+```
+
+### 6.3. Bidirectional search
+
+This is used to find the shortest path between a source and a destination node. It runs two simultaneous BFS, one from each node. When their searches collide, the path is found.
+
+<img src="img/graph_search2.png" width="500">
+
+Why is bidirectional search faster than BFS? Imagine that every node has <=`k` adjacent nodes and the shortest path from `s` to `t` has length `d`.
+
+* In BFS, we would search <=`k` nodes in the first level of the search, then <=`k` nodes for each of those `k`, so `k`<sup>2</sup> nodes. We would do this `d` times, so O(k<sup>d</sup>)
+* In bidirectional search, the two search collide at approximately d/2 levels, the midpoint. The search from `s` visits approximately k<sup>d/2</sup> nodes, same as the search from `t`. So so O(k<sup>d/2</sup>)
