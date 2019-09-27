@@ -184,4 +184,4 @@ A tree is a type of graph, but not all graphs are trees. A tree is a connected g
 * The graph can have multiple isolated subgraphs. If there's a path between every pair of vertices, it's called a 'connected graph'
 * The graph can also have cycles. If it doesn't, it's called 'acyclic'
 
-![graph](img/graph.png){width="300"}
+<img src="img/graph.png" width="300" height="300">
