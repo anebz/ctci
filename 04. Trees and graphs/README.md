@@ -185,3 +185,43 @@ A tree is a type of graph, but not all graphs are trees. A tree is a connected g
 * The graph can also have cycles. If it doesn't, it's called 'acyclic'
 
 <img src="img/graph.png" width="300">
+
+In programming, there are two common ways to represent a graph:
+
+### 5.1. Adjacency list
+
+Every vertex/node stores a list of adjacent vertices, in an undirected graph, an edge like (a,b) would be stored twice, once in `a`'s adjacent vertices and once in `b`'s adjacent vertices. A class definition could look the same as a tree node:
+
+```java
+class Graph {
+    public Node[] nodes;
+}
+
+class Node {
+    public String name;
+    public Node[] children;
+}
+```
+
+The class `Graph` is used because unlike in a tree, you can't necessarily reach all the nodes from a single node.
+
+To represent the graph, an array or hash table of lists (arrays, arraylists, linked lists, etc) can store the adjacency list. The graph above:
+
+```bash
+0: 1
+1: 2
+2: 0, 3
+3: 2
+4: 6
+5: 4
+6: 5
+```
+
+### 5.2. Adjacency matrices
+
+This is an NxN boolean matrix (N: number of nodes), where a `true` value at `matrix[i][j]` indicates an edge from the node `i` to the node `j`. In an undirected graph, the matrix is symmetric. In a directed one, it needn't be.
+
+The same graph algorithms that are used on adjacency lists (breadh-first search, etc) can be performed with adjacency matrices, but might be somewhat less efficient.
+
+* In the list representation, you can easily iterate through the neighbors of a node
+* In the matrix representation, you need to iterate through all the nodes to identify a node's neighbors
