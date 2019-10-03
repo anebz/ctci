@@ -34,6 +34,17 @@ If you can't afford to buy the book, you can find a free pdf [here](https://leon
 * List intersection
 * Loop detection
 
+## Chapter 3 Stacks and queues
+
+* 3 stacks in array
+* Min function in stack
+* List of stacks
+* Queue via stack
+* Sort stack
+* Animal shelter (enqueue and dequeue with ordering)
+
+## Chapter 4 Trees and graphs
+
 ## Chapter 7 Object-oriented design
 
 * Hash tables
@@ -51,3 +62,8 @@ If you can't afford to buy the book, you can find a free pdf [here](https://leon
 * Write an integer in english
 * Contiguous sequence or Maximum subarray
 * Least Recently Used cache
+
+## Chapter 18 Advanced topics
+
+* Hash table collision resolution
+* Rabin-Karp substring search
