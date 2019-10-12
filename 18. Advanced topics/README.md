@@ -27,6 +27,58 @@ More formally, the algorithm works like this:
    3. Append `n` to `order`
 6. If `order` contains all the nodes, success. Otherwise, the topological sort has failed due to a cycle.
 
+## 18.3. Dijkstra's algorithm
+
+Dijkstra's algorithm finds the shortest path between two points in a weighted directed graph (which might have cycles). All edges must have positive values.
+
+In some graphs we want edges with weights. If we have a graph of a city, each edge representing a road and its weight representing the travel time, what's the shortest path from your location `s` to another point `t`? The brute force option would be:
+
+1. Start off at `s`
+2. For each of `s`'s outbound edges, 'clone ourselves' and start walking. If the edge (s,x) has weight 5, it takes 5mins to go to `x`
+3. Each time we arrive at a node, check if it has been visited before. if so, stop. Else, clone again and head out in all possible directions
+4. The first one to get to `t` wins
+
+Dijkstra's algorithm finds the minimum weight path from a start node `s` to **every** node in the graph.
+
+<img src="img/dijkstra1.png" width="500">
+
+We want to go from `a` to `i`. We first initialize some variables:
+
+* `path_weight[node]`: maps from each node to the total weight of the shortest path. All values are initialized to infinity except `path_weight[a]` which is 0
+* `previous[node]`: maps from each node to the previous node in the (current) shortest path
+* `remaining` a priority queue of all nodes in the graph, where each node's priority is defined by its `path_weight`.
+
+> A (min) priority queue is an abstract data type that supports insertion of an object and key, removing the object with the minimum key and decreasing a key. The difference with a typical queue, the difference is that instead of removing the oldest item, it removes the item with the lowest/highest priority. A priority queue can be implemented with an array or a min/max heap
+
+Then we start adjusting the values of `path_weight`. We iterate through `remaining` until( it's empty, doing the following:
+
+1. Select the node in `remaining` with the lowest value in `path_weight`. This node is `n`
+2. For each adjacent node, compare `path_weight[x]` (which is the weight of the current shortest path from `a` to`x`) to `path_weight[n] + path_weight[(n,x)]`
+3. Remove `n` from `remaining`
+
+When `remaining` is empty, then `path_weight` stores the weight of the current shortest path from `a` to each node. We can reconstruct this path by tracing through `previous`.
+
+Example:
+
+1. n = `a`. Its adjacent nodes update the values of `path_weight` to 5, 3, 2 (b, c, e) and `previous` to `a`. Then remove `a` from `remaining`.
+2. The next smallest node is `e`. `path_weight[e]` is already 2. Update `path_weight` to the accumullated weight + values of the adjacent nodes, 6, 9 (h, i) (2 + 4, 2 + 7) and `previous` for both of those.
+3. The next smallest node is `c` with `path_weight`=3. Its adjacents are b, d. `path_weight[d]` has never been initialized (infinity), so it adopts the value of `path_weight[d] = path_weight[c] + path_weight[(c,d)]` = 3 + 1 = 4. `path_weight[b]` already had value=5, but since `path_weight[c] + path_weight[(c,b)]` = 3 + 1 = 4 is smaller, we update it. Also update `previous` to `c`.
+
+Continue doing this until `remaining` is empty.
+
+<img src="img/dijkstra2.png" width="750">
+
+Once finished, we can start from the end node and get the `previous` node until reaching the beginning point. The path weight of going from `a` to `i` is 8.
+
+### 18.3.1. Implementation
+
+The runtime of this algorithm depends on the implementation of the priority queue. Assume we have `v` vertices and `e` edges
+
+* If we use an array, then we call `remove_min` up to `v` times. Each operation takes O(v), so O(v<sup>2</sup>) only on `remove_min`. Also. `path_weight` and `previous` will be updated at least once per edge, so O(e) time. `e` must be <= v<sup>2</sup> because there can't be more edges than pairs of vertices. Therefore, runtime is O(v<sup>2</sup>).
+* If we use a min heap, the `remove_min` calls take O(logv) (as will inserting/updating a key). We do one `remove_min` for each vertex, so O(vlogv). Also, on each edge, we might call one update key or insert operation, so O(elogv). Total runtime O((e+v)logv).
+
+The best implementation depends on the number of edges. If the graph has a lot of edges, the array implementation O(v<sup>2</sup>) is better than O((v<sup>2</sup>+v)logv). But the graph is sparse, the min heap is better.
+
 ## 18.4. Hash table collision resolution
 
 Collision in a hash table means there's already an item stored at the designated index.
