@@ -108,3 +108,35 @@ Searching for a substring S in a bigger string B, brute force approach takes O(s
 If two strings are the same, they must have the same hash. But it's also possible for two different strings to have the same hash. If we efficiently precompute a hash value for each sequence of s characters within B, we can find the location of S in O(b) time. For example, hash function is sum of each character. The substring S has value of 24 for example. We go through the string B, check how many times the sum of characters is 24, and check which one (if any) are indeed equal to S.
 
 How to compute the hash value? If we calculate hash value of each substring, that still takes O(s(b-s)). Instead, we know that hash(s[1:4]) = hash(s[:3]) - code(s[0]) + code(s[4]). This takes O(b) time.
+
+## 18.6. AVL trees
+
+An AVL tree is one of 2 common ways to implement tree balancing, here only insertions are discussed. An AVL tree stores in each node the height of the subtrees rooted at this node. Then, for any node, we can check if it's height balanced: that the height of the left subtree and the height of the right subtree differ by no more than one. This prevents situations where the tree gets too loopsided:
+
+```math
+balance(n) = n.left.height - n.right.height - 1
+-1 <= balance(n) <= 1
+```
+
+### 18.6.1. Inserts
+
+When inserting a node, the balance of some nodes might change to -2 or 2. When 'unwinding' the recursive stack, we check and fix the balance at each node. We do this through a series of rotations, which can be left or right rotations. The right rotation is the inverse of the left. Example:
+
+<img src="img/avl1.png" width="500">
+
+Depending on the balance and where it occurs, we fix it differentlz
+
+> Case 1: Balance=2
+
+The left's height os 2 bigger than the right's height. The left subtree's extra node must be hanging to the left (like in LEFT LEFT SHAPE), or hanging to the right (as in LEFT RIGHT SHAPE). If it's like the left right shape, transform it with the rotations below into the left left shape, then into BALANCED. If it already looks like the left left shape, just transform it into BALANCED.
+
+<img src="img/avl2.png" width="500">
+
+> Case 2: Balance=-2
+
+This is the mirror image of the prior case.
+
+<img src="img/avl3.png" width="500">
+
+In both cases, "balanced" means that the balance of the tree is between -1 and 1, not that it's 0. We recurse up the tree, fixing any imbalances. If we ever achieve a balance=0, we know there are no imbalances anymore. This portion of the tree won't cause another higher subtree to have a balance of -2/2. If we were doing this non-recursively, then we could break from the loop.
+ 
