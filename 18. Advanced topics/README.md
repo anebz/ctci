@@ -139,4 +139,7 @@ This is the mirror image of the prior case.
 <img src="img/avl3.png" width="500">
 
 In both cases, "balanced" means that the balance of the tree is between -1 and 1, not that it's 0. We recurse up the tree, fixing any imbalances. If we ever achieve a balance=0, we know there are no imbalances anymore. This portion of the tree won't cause another higher subtree to have a balance of -2/2. If we were doing this non-recursively, then we could break from the loop.
- 
+
+## 18.7. Red-black trees
+
+Pages 639-642 on the CTCI book.
