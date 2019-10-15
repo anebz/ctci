@@ -45,6 +45,9 @@ If you can't afford to buy the book, you can find a free pdf [here](https://leon
 
 ## Chapter 4 Trees and graphs
 
+* Find route between nodes in graph
+* Create minimal binary search tree from array
+
 ## Chapter 7 Object-oriented design
 
 * Hash tables
