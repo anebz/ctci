@@ -47,6 +47,7 @@ If you can't afford to buy the book, you can find a free pdf [here](https://leon
 
 * Find route between nodes in graph
 * Create minimal binary search tree from array
+* Create a linked list for each depth in the tree
 
 ## Chapter 7 Object-oriented design
 
