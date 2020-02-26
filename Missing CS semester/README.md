@@ -59,3 +59,60 @@ Run script, find string in string and output to file
 ```
 
 Use `grep -o` to display only matched pattern, `grep -P` for regex. [See stackoverflow](https://unix.stackexchange.com/a/13472)
+
+## 2. [Shell tools and scripting](https://missing.csail.mit.edu/2020/shell-tools/)
+
+### 2.1. Shell scripting
+
+Add text to each file in directory, capture many files at the same time:
+
+```bash
+cp /path/to/project/{foo,bar,baz}.sh /newpath
+mv *{.py,.sh} folder
+```
+
+### 2.2. Shell tools
+
+```bash
+# Find all directories named src
+find . -name src -type d
+# Find all python files that have a folder named test in their path
+find . -path '**/test/**/*.py' -type f
+# Find all files modified in the last day
+find . -mtime -1
+# Find all zip files with size in range 500k to 10M
+find . -size +500k -size -10M -name '*.tar.gz'
+
+# Delete all files with .tmp extension
+find . -name '*.tmp' -exec rm {} \;
+# Find all PNG files and convert them to JPG
+find . -name '*.png' -exec convert {} {.}.jpg \;
+```
+
+`find` finds files/filenames, to find content inside files use `grep`. Some of the flags include `-C` for getting context lines around it, or `-v` for inverting the result, getting those lines that don't match the pattern. `-R` for recursively iterating in directories.
+
+Alternatives like `rg` expand the capabilities of `grep -R` by ignoring .git files, etc.
+
+```bash
+# Find all python files where I used the requests library
+rg -t py 'import requests'
+# Find all files (including hidden files) without a shebang line
+rg -u --files-without-match "^#!"
+# Find all matches of foo and print the following 5 lines
+rg foo -A 5
+# Print statistics of matches (# of matched lines and files )
+rg --stats PATTERN
+```
+
+> Finding shell commands
+
+```bash
+# find shell commands where you used apt
+history | grep apt
+```
+
+Another trick is Ctrl+R, you can insert a subtring to find matching shell commands. By pressing Ctrl+R again, you can iterate through them. Tools for seeing history-based autosuggestions: [zsh](https://github.com/zsh-users/zsh-history-substring-search).
+
+> Navigating directories
+
+You can use [fasd](https://github.com/clvv/fasd) to autojump to common directories that you visit often. 
