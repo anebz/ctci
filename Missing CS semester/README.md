@@ -115,4 +115,13 @@ Another trick is Ctrl+R, you can insert a subtring to find matching shell comman
 
 > Navigating directories
 
-You can use [fasd](https://github.com/clvv/fasd) to autojump to common directories that you visit often. 
+You can use [fasd](https://github.com/clvv/fasd) to autojump to common directories that you visit often.
+
+To list all files in a directory in
+
+* human readable
+* show hidden
+* print details
+* sort by date
+
+, do `ls -halt`.
