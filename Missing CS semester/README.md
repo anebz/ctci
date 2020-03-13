@@ -147,6 +147,7 @@ Vim can have many tabs and buffers, initially it has a single tab, containing a 
 To enter **Command line mode**, type `:`.
 
 * :q quit (close window)
+* :q! quit, discard all changes
 * :w save (“write”)
 * :wq save and quit
 * :e {name of file} open file for editing
@@ -157,7 +158,7 @@ To enter **Command line mode**, type `:`.
 
 ### 3.1. Movements
 
-* Basic movement: hjkl (left, down, up, right)
+* Basic movement: `hjkl` (left, down, up, right)
 * Words: w (next word), b (beginning of word), e (end of word)
 * Lines: 0 (beginning of line), ^ (first non-blank character), $ (end * of line)
 * Screen: H (top of screen), M (middle of screen), L (bottom of screen)
@@ -172,11 +173,14 @@ To enter **Command line mode**, type `:`.
 
 ### 3.2. Edits
 
-* i enter insert mode
+* `i` enter insert mode
   * but for manipulating/deleting text, want to use something* more than backspace
 * o / O insert line below / above
-* d{motion} delete {motion}
-  * e.g. dw is delete word, d$ is delete to end of line, d0 is* delete to beginning of line
+* `A` append to line (in the end of line)
+* `d{motion}` delete {motion}
+  * e.g. dw is delete word, d$ is delete to end of line, d0 is* delete to beginning of line, d$ delete until end of line
+* `dd` delete whole line. 2dd, delete this and next line
+* `rx` to replace the character at the cursor by x. `ra`, deletes current character and writes a.
 * c{motion} change {motion}
   * e.g. cw is change word
   * like d{motion} followed by i
@@ -184,9 +188,9 @@ To enter **Command line mode**, type `:`.
 * s substitute character (equal to xi)
 * visual mode + manipulation
   * select text, d to delete it or c to change it
-* u to undo, \<C-r\> to redo
+* `u` to undo, `U` to undo whole line, \<Ctr\> + R to redo
 * y to copy / “yank” (some other commands like d also copy)
-* p to paste
+* `p` to paste under the cursor
 * Lots more to learn: e.g. ~ flips the case of a character
 
 ### 3.3. Counts
