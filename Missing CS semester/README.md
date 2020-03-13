@@ -144,34 +144,44 @@ To go to **insertion mode**, press `i` and insert text. Press `<ESC>` to go back
 
 Vim can have many tabs and buffers, initially it has a single tab, containing a single window.
 
+### 3.1. Command line
+
 To enter **Command line mode**, type `:`.
 
 * :q quit (close window)
 * :q! quit, discard all changes
 * :w save (“write”)
+* :w \<file_name\> saves to file_name
+* :r \<file_name\> read from file_name, paste content above cursor
 * :wq save and quit
 * :e {name of file} open file for editing
 * :ls show open buffers
 * :help {topic} open help
   * :help :w opens help for the :w command
   * :help w opens help for the w movement
+* :!\<command\> to execute external commands, like :!ls
 
-### 3.1. Movements
+### 3.2. Movements
 
 * Basic movement: `hjkl` (left, down, up, right)
-* Words: w (next word), b (beginning of word), e (end of word)
-* Lines: 0 (beginning of line), ^ (first non-blank character), $ (end * of line)
+* Words: `w` (next word), `b` (beginning of word), `e` (end of word)
+* `v` and move cursor, selects those lines. then press : to save or whatever. or `d` to delete for example
+* Lines: `0` (beginning of line), `^` (first non-blank character), `$` (end * of line)
 * Screen: H (top of screen), M (middle of screen), L (bottom of screen)
 * Scroll: Ctrl-u (up), Ctrl-d (down)
-* File: gg (beginning of file), G (end of file)
-* Line numbers: :{number}<CR> or {number}G (line {number})
-* Misc: % (corresponding item)
+* File: `gg` (beginning of file), `G` (end of file)
+* Line numbers: `{line_number}G`. To see which line you are in, `<Ctr> + G`
+    * `<Ctr> + O` goes to next occurrence, `<Ctr> + I` to previous
+* Misc: `%` (corresponding item)
+    * Cursor on ( and press `%`, you go to the matching )
+
+
 * Find: f{character}, t{character}, F{character}, T{character}
   * find/to forward/backward {character} on the current line
   * , / ; for navigating matches
-* Search: /{regex}, n / N for navigating matche
+* Search: `/{regex}`, `n` / `N` for navigating matches
 
-### 3.2. Edits
+### 3.3. Edits
 
 * `i` enter insert mode
   * but for manipulating/deleting text, want to use something* more than backspace
@@ -184,25 +194,31 @@ To enter **Command line mode**, type `:`.
 * c{motion} change {motion}
   * e.g. cw is change word
   * like d{motion} followed by i
-* x delete character (equal do dl)
-* s substitute character (equal to xi)
+* `x` delete character (equal do dl)
+* `s` substitute character (equal to xi)
+    * :s/old/new changes first occurrence of old to new
+    * :s/old/new/g changes all occurreces of old to new throughout the line
 * visual mode + manipulation
   * select text, d to delete it or c to change it
-* `u` to undo, `U` to undo whole line, \<Ctr\> + R to redo
+* `u` to undo, `U` to undo whole line, `<Ctr> + R` to redo
 * y to copy / “yank” (some other commands like d also copy)
 * `p` to paste under the cursor
 * Lots more to learn: e.g. ~ flips the case of a character
 
-### 3.3. Counts
+### 3.4. Counts
 
 * 3w move 3 words forward
 * 5j move 5 lines down
 * 7dw delete 7 words
 
-### 3.4. Demo
+### 3.5. Demo
 
-To learn vim: https://www.openvim.com/ and vimtutor.
+To learn vim: vimtutor.
 
+```bash
 sudo apt install vim
+vimtutor
+```
+
 
 https://medium.com/actualize-network/how-to-learn-vim-a-four-week-plan-cd8b376a9b85
