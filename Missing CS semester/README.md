@@ -174,8 +174,6 @@ To enter **Command line mode**, type `:`.
     * `<Ctr> + O` goes to next occurrence, `<Ctr> + I` to previous
 * Misc: `%` (corresponding item)
     * Cursor on ( and press `%`, you go to the matching )
-
-
 * Find: f{character}, t{character}, F{character}, T{character}
   * find/to forward/backward {character} on the current line
   * , / ; for navigating matches
