@@ -1,5 +1,7 @@
 # Chapter 5. Bit manipulation
 
+page 127. hints start at 673
+
 ## 5.1. Two's complement and negative numbers
 
 Positive numbers are represented as themselves, negative numbers as the two's complement of its absolute value, with a 1 in its sign bit, indicating it's negative.
@@ -19,6 +21,14 @@ Indicated with a >>> operator, all bits are shifted, sign bit too.
 * -75: **1**0110101
 * 90: **0**1011010
 
+```c++
+int repeatedLogicalShift(int x, int count) {
+    for (int i = 0; i < count; i++) {
+        x >>>= 1; // Logical shift by 1
+    }
+}
+```
+
 ### 5.2.2. Arithmetic shift
 
 The sign bit is kept, and all bits (sign bit too) are shifted.
@@ -30,12 +40,6 @@ The sign bit is kept, and all bits (sign bit too) are shifted.
 int repeatedArithmeticShift(int x, int count) {
     for (int i = 0; i < count; i++) {
         x >>= 1; // Arithmetic shift by 1
-    }
-}
-
-int repeatedLogicalShift(int x, int count) {
-    for (int i = 0; i < count; i++) {
-        x >>>= 1; // Logical shift by 1
     }
 }
 ```
@@ -54,7 +58,7 @@ boolean getBit(int num, int i) {
 
 ### Set bit
 
-This function shifts 1 over by i bits, creating a value like 00010000. By performing an OR with `num`, only the value at bit i will change. All other bits of the mask are zero, and won't affect `num`.
+This function shifts 1 over by i bits, creating a value like 00010000. By performing an OR with `num`, only the value at bit i will change. All other bits of the mask are zero, and won't affect `num`. It sets the bit to 1 if it's 0, otherwise leaves the number unchanged.
 
 ```c++
 boolean setBit(int num, int i) {

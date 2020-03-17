@@ -1,6 +1,6 @@
 # Cracking the coding interview exercises and notes
 
-If you can't afford to buy the book, you can find a free pdf [here](https://leonmercanti.com/books/personal-development/Cracking%20the%20Coding%20Interview%20189%20Programming%20Questions%20and%20Solutions.pdf).
+If you can't afford to buy the book, you can find a free pdf [here](http://ahmed-badawy.com/blog/wp-content/uploads/2018/10/Cracking-the-Coding-Interview-6th-Edition-189-Programming-Questions-and-Solutions.pdf) (Updated as of 2020.03.14).
 
 ## Introduction
 
@@ -48,6 +48,11 @@ If you can't afford to buy the book, you can find a free pdf [here](https://leon
 * Find route between nodes in graph
 * Create minimal binary search tree from array
 * Create a linked list for each depth in the tree
+
+## Chapter 5
+
+* Insert bit
+* Binary to string
 
 ## Chapter 7 Object-oriented design
 
