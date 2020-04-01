@@ -53,6 +53,7 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 
 * Insert bit
 * Binary to string
+* Flip bit to create longest sequence of 1s
 
 ## Chapter 7 Object-oriented design
 

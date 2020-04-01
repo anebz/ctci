@@ -186,7 +186,7 @@ To enter **Command line mode**, type `:`.
 * o / O insert line below / above
 * `A` append to line (in the end of line)
 * `d{motion}` delete {motion}
-  * e.g. dw is delete word, d$ is delete to end of line, d0 is* delete to beginning of line, d$ delete until end of line
+  * e.g. dw is delete word, d$ is delete to end of line, d0 is delete to beginning of line, d$ delete until end of line
 * `dd` delete whole line. 2dd, delete this and next line
 * `rx` to replace the character at the cursor by x. `ra`, deletes current character and writes a.
 * c{motion} change {motion}
@@ -199,7 +199,7 @@ To enter **Command line mode**, type `:`.
 * visual mode + manipulation
   * select text, d to delete it or c to change it
 * `u` to undo, `U` to undo whole line, `<Ctr> + R` to redo
-* y to copy / “yank” (some other commands like d also copy)
+* `y` to copy / “yank” (some other commands like d also copy)
 * `p` to paste under the cursor
 * Lots more to learn: e.g. ~ flips the case of a character
 
