@@ -218,5 +218,49 @@ sudo apt install vim
 vimtutor
 ```
 
+## 4. [Data wrangling](https://missing.csail.mit.edu/2020/data-wrangling/)
 
-https://medium.com/actualize-network/how-to-learn-vim-a-four-week-plan-cd8b376a9b85
+Data wrangling: take data in one format and turn it into a different format.
+
+Obtain the log of the server, but only ssh stuff (that's why | grep sshd)
+
+```bash
+ssh myserver journalctl | grep sshd
+```
+
+This gets the whole log in my computer, and filters ssh stuff in my computer. To run everything on the server, + filter for "disconnected from" entries. `less` gives us a “pager” that allows us to scroll up and down through the long output.
+
+We can stick the current filtered logs into a file so that we don’t have to access the network while developing.
+
+```bash
+ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' > ssh.log
+less ssh.log
+```
+
+Filter through regular expressions. `sed` is a “stream editor” that builds on top of the old ed editor. In it, you basically give short commands for how to modify the file, rather than manipulate its contents directly (although you can do that too). There are tons of commands, but one of the most common ones is s: substitution. For example, we can write:
+
+```bash
+ssh myserver journalctl
+ | grep sshd
+ | grep "Disconnected from"
+ | sed 's/.*Disconnected from //'
+ ```
+
+ Sort to sort them, uniq -c to collapse consecutive equal lines into one. Then sort them again.
+
+ sort -n will sort in numeric (instead of lexicographic) order. -k1,1 means “sort by only the first whitespace-separated column”. The ,n part says “sort until the nth field, where the default is the end of the line.
+
+ If we wanted the least common ones, we could use head instead of tail. There’s also sort -r, which sorts in reverse order.
+
+ ```bash
+ ssh myserver journalctl
+ | grep sshd
+ | grep "Disconnected from"
+ | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
+ | sort | uniq -c
+ | sort -nk1,1 | tail -n10
+ ```
+
+`awk` is another editor, see in webpage.
+
+If you’re fetching HTML data, [pup](https://github.com/EricChiang/pup) might be helpful. For JSON data, try [jq](https://stedolan.github.io/jq/tutorial/). 
