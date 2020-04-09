@@ -53,6 +53,9 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 
 * Insert bit
 * Binary to string
+* Flip bit to create longest sequence of 1s
+* (( n & (n-1)) == 0). n=?
+* How many different bits do two numbers have. 11001 vs. 11010 = 2. Levenstein distance
 
 ## Chapter 7 Object-oriented design
 
