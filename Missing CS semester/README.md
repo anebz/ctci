@@ -327,3 +327,48 @@ Remote port forwarding
 A common pain when connecting to a remote server are disconnections due to shutting down/sleeping your computer or changing a network. Moreover if one has a connection with significant lag using ssh can become quite frustrating. [Mosh](https://mosh.org/), the mobile shell, improves upon ssh, allowing roaming connections, intermittent connectivity and providing intelligent local echo.
 
 Sometimes it is convenient to mount a remote folder. [sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server locally, and then you can use a local editor.
+
+## 6. [Version control, git](https://missing.csail.mit.edu/2020/version-control/)
+
+[Oh shit, Git!?!](https://ohshitgit.com/)
+
+### 7.[Debugging and Profiling](https://missing.csail.mit.edu/2020/debugging-profiling/)
+
+“The most effective debugging tool is still careful thought, coupled with judiciously placed print statements” — Brian Kernighan Unix for Beginners.
+
+```bash
+$ python logger.py
+# Raw output as with just prints
+$ python logger.py log
+# Log formatted output
+$ python logger.py log ERROR
+# Print only ERROR levels and above
+$ python logger.py color
+# Color formatted output
+```
+
+Linux systems use systemd, a system daemon that controls many things in your system such as which services are enabled and running. systemd places the logs under /var/log/journal in a specialized format and you can use the [journalctl](http://man7.org/linux/man-pages/man1/journalctl.1.html) command to display the messages.
+
+## 7. [Metaprogramming](https://missing.csail.mit.edu/2020/metaprogramming/)
+
+For most projects, whether they contain code or not, there is a “build process”. Some sequence of operations you need to do to go from your inputs to your outputs. Often, that process might have many steps, and many branches.
+
+When you run `make`, it consults a file called `Makefile` in the current directory. All the targets, their dependencies, and the rules are defined in that file. An example of a Makefile
+
+```Makefile
+paper.pdf: paper.tex plot-data.png  
+    pdflatex paper.tex
+
+plot-%.png: %.dat plot.py
+    ./plot.py -i $*.dat -o $@
+```
+
+The things named on the right-hand side are dependencies, and the left-hand side is the target. The indented block is a sequence of programs to produce the target from those dependencies. In make, the first directive also defines the default goal. If you run make with no arguments, this is the target it will build.
+
+Read more in the webpage.
+
+### 7.1. Continuous integration systems
+
+It's the "stuff that runs whenever your code changes". Some companies provide CI like Travis CI, Github Actions.
+
+They all work in roughly the same way: you add a file to your repository that describes what should happen when various things happen to that repository. By far the most common one is a rule like “when someone pushes code, run the test suite”. When the event triggers, the CI provider spins up a virtual machines (or more), runs the commands in your “recipe”, and then usually notes down the results somewhere. You might set it up so that you are notified if the test suite stops passing, or so that a little badge appears on your repository as long as the tests pass.
