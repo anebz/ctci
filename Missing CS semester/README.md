@@ -264,3 +264,66 @@ ssh myserver journalctl
 `awk` is another editor, see in webpage.
 
 If you’re fetching HTML data, [pup](https://github.com/EricChiang/pup) might be helpful. For JSON data, try [jq](https://stedolan.github.io/jq/tutorial/). 
+
+## 5. [Command-line environments](https://missing.csail.mit.edu/2020/command-line/)
+
+### 5.1. Aliases
+
+A shell alias is a short form for another command that your shell will replace automatically for you.
+
+```bash
+# Make shorthands for common flags
+alias ll="ls -lh"
+
+# Save a lot of typing for common commands
+alias gs="git status"
+alias gc="git commit"
+alias v="vim"
+```
+
+### 5.2. Dotfiles
+
+Dotflies begin with a . like `~/.vimrc` for vim, so they're hidden in ls by default. For bash, editing your `.bashrc` or `.bash_profile` will work in most systems.
+
+Dotfiles should be in their own folder, under version control, and **symlinked** into place using a script. Benefits:
+
+* Easy installation: if you log in to a new machine, applying customization takes a minute
+* Portability: your tools work the same way everywhere
+* Syncronization
+* Change tracking
+
+What to put in dotflies? Read online documentation or [man pages](https://en.wikipedia.org/wiki/Man_page).
+
+### 5.3. Remote machines
+
+To ssh into a server. The user is foo, the server is bar.mit.edu. Server can be specified with a URL or an IP
+
+```bash
+ssh foo@bar.mit.edu
+```
+
+An often overlooked feature of ssh is the ability to run commands directly. `ssh foobar@server ls`.
+
+Key-based authentication exploits public-key cryptography to prove to the server that the client owns the secret private key without revealing the key. This way you do not need to reenter your password every time. Nevertheless, the private key (often ~/.ssh/id_rsa) is effectively your password, so treat it like so.
+
+#### Copying files over SSH
+
+[scp](http://man7.org/linux/man-pages/man1/scp.1.html) when copying large amounts of files/directories, the secure copy scp command is more convenient since it can easily recurse over paths. The syntax is `scp path/to/local_file remote_host:path/to/remote_file`.
+
+#### Port forwarding
+
+In many scenarios you will run into software that listens to specific ports in the machine. When this happens in your local machine you can type localhost:PORT or 127.0.0.1:PORT.
+
+But what do you do with a remote server that does not have its ports directly available through the network/internet?.
+
+Local port forwarding
+
+![ ](https://i.stack.imgur.com/a28N8.png%C2%A0)
+
+Remote port forwarding
+
+![ ](https://i.stack.imgur.com/4iK3b.png%C2%A0)
+
+A common pain when connecting to a remote server are disconnections due to shutting down/sleeping your computer or changing a network. Moreover if one has a connection with significant lag using ssh can become quite frustrating. [Mosh](https://mosh.org/), the mobile shell, improves upon ssh, allowing roaming connections, intermittent connectivity and providing intelligent local echo.
+
+Sometimes it is convenient to mount a remote folder. [sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server locally, and then you can use a local editor.
