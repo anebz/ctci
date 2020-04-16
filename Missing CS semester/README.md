@@ -42,6 +42,11 @@ chmod +x my_file
 ./my_file
 ```
 
+Execute script and write print output to file
+```bash
+python script.py |& tee file.txt
+```
+
 [Stackoverflow info](https://askubuntu.com/a/229592):
 
 > Generally, using ./filename.sh specifies a file in the current directory and using filename.sh specifies a file in the current directory or any directory of PATH. The first usage removes any uncertainty as to which file is accessed. In this case, you are attempting to execute the script with bash or another interpreter (by virtue of assumed #!/bin/bash as first line in your script) just by entering the filename. This usage requires the directory is specified. Alternatively, you can try bash filename.sh which seems to work with unspecified directory.

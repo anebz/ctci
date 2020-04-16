@@ -1,7 +1,5 @@
 # Chapter 5. Bit manipulation
 
-page 127. hints start at 673
-
 ## 5.1. Two's complement and negative numbers
 
 Positive numbers are represented as themselves, negative numbers as the two's complement of its absolute value, with a 1 in its sign bit, indicating it's negative.
