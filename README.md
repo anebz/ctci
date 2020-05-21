@@ -63,6 +63,9 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 
 ## Chapter 7 Object-oriented design
 
+* Call center
+* Parking lot
+* Chat server
 * Hash tables
 
 ## Chapter 8 Recursion
