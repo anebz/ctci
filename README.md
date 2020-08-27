@@ -70,7 +70,12 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 
 ## Chapter 8 Recursion
 
+* Triple step
+* Robot in grid
 * Magic index (index such that A[i] = 1)
+* Power set
+* Permutations of string with unique characters
+* Permutations of string with duplicate characters
 
 ## Chapter 10 Sorting and searching
 
