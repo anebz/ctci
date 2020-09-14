@@ -1,7 +1,5 @@
 # Chapter 8 Recursion and dynamic programming
 
-Questions p146, solutions p353
-
 You can know a problem is recursive when it can be built off of subproblems. If a program says: compute the nth, or the first n, or all..., it might be recursive.
 
 ## How to approach

@@ -77,6 +77,12 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 * Permutations of string with unique characters
 * Permutations of string with duplicate characters
 
+## Chapter 9 System design and scalability
+
+* Stock data
+* Social network
+* Web crawler
+
 ## Chapter 10 Sorting and searching
 
 * Sorted matrix search
