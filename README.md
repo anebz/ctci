@@ -72,7 +72,7 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 
 * Triple step
 * Robot in grid
-* Magic index (index such that A[i] = 1)
+* Magic index (index such that A\[i\] = 1)
 * Power set
 * Permutations of string with unique characters
 * Permutations of string with duplicate characters
@@ -82,9 +82,16 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 * Stock data
 * Social network
 * Web crawler
+* Duplicate URLs
+* Cache
+* Sales rank
+* Personal finance manager
 
 ## Chapter 10 Sorting and searching
 
+* Sorted merge
+* Anagrams
+* Search in rotated array
 * Sorted matrix search
 
 ## Chapter 16 Moderate problems
