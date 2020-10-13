@@ -1,6 +1,6 @@
 # Cracking the coding interview exercises and notes
 
-If you can't afford to buy the book, you can find a free pdf [here](http://ahmed-badawy.com/blog/wp-content/uploads/2018/10/Cracking-the-Coding-Interview-6th-Edition-189-Programming-Questions-and-Solutions.pdf) (Updated as of 2020.03.14).
+If you can't afford to buy the book, you can find a free pdf [here](https://github.com/alxerg/Books-1/blob/master/Cracking%20the%20Coding%20Interview%2C%206th%20Edition%20189%20Programming%20Questions%20and%20Solutions.pdf) (last updated on 2020.10.09).
 
 ## Introduction
 
@@ -92,7 +92,22 @@ If you can't afford to buy the book, you can find a free pdf [here](http://ahmed
 * Sorted merge
 * Anagrams
 * Search in rotated array
+* Sorted search, no size
 * Sorted matrix search
+* Sparse search
+* Sort big file
+* Missing int
+* Find duplicates
+* Sorted matrix search
+* Rank for stream
+
+## Chapter 11 Testing
+
+* Mistake
+* Random crashes
+* Chess test
+* Test a pen
+* Test an ATM
 
 ## Chapter 16 Moderate problems
 

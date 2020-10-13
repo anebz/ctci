@@ -30,8 +30,7 @@ Java algorithm in book.
 
 Pick a random element and partition the array, such that all numbers lower than the partitioning element come before all elements greater than it. Repeatedly partitioning the array (and its sub-arrays) around an element, the array is eventually sorted. But as the partitioned element is not guaranteed to be the median or close to it, the sorting could be very slow. That is why the worst case rutime is O(n<sup>2</sup>).
 
-
-```python
+```pseudocode
 a = [3, 5, 2, 4, 1, 6, 7], left=0, right=6
 
 pivot = a[3] = 4
@@ -77,6 +76,28 @@ This is a sorting algorithm that distributes the elements of an array into a num
 
 In **binary search**, we look for an element x in a sorted array by first comparing x to the midpoint of the array. If x is lower, we search the left half. and vice versa.
 
-See code in book.
+See code in book, see below for Python:
+
+```python
+def binarySearch(arr, x):
+    l = 0
+    r = len(arr) - 1
+    while l <= r:
+        mid = l + (r - l) // 2;
+        if arr[mid] == x:
+            return mid
+  
+        # If x is greater, ignore left half
+        elif arr[mid] < x:
+            l = mid + 1
+        # If x is smaller, ignore right half
+        else:
+            r = mid - 1
+    return -1
+
+arr = [2, 3, 4, 10, 40]
+x = 10
+result = binarySearch(arr, x)
+```
 
 There are more algorithms than just binary search, use binary trees or hash tables too.
