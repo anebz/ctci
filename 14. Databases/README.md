@@ -1,5 +1,81 @@
 # 14. Databases
 
+## Basic SQL
+
+```sql
+SELECT CITY FROM STATION WHERE CODE = '123'
+```
+
+Get distinct cities:
+
+```sql
+SELECT DISTINCT CITY FROM STATION WHERE CODE = '123'
+```
+
+Count number of distinct cities
+
+```sql
+SELECT count(DISTINCT CITY) FROM STATION WHERE CODE = '123'
+```
+
+Apart from count, there is also `sum`, `avg`, `ceil`, `floor`.
+
+Get the shortest city name and longest city name
+
+```sql
+SELECT CITY, LENGTH(CITY) FROM STATION
+ORDER BY LENGTH(CITY), CITY asc 
+limit 1;
+
+SELECT CITY, LENGTH(CITY) FROM STATION
+ORDER BY LENGTH(CITY), CITY desc 
+limit 1;
+
+```
+
+Get cities ending with vowels
+
+```sql
+SELECT DISTINCT CITY FROM STATION WHERE city REGEXP "[aeiou]$"
+```
+
+Select substring of column. The first two characters. 1 means first character, 2 means length. SQL has an index system starting from 1. To get the last ones, use -X.
+
+```sql
+SELECT SUBSTR(NAME, 1, 2) FROM TABLE
+```
+
+Output a string for each case
+
+```sql
+SELECT
+    CASE
+        WHEN A >= (B + C) OR B >= (A + C) OR C >= (A + B) THEN 'Not A Triangle'
+        WHEN A = B AND A = C THEN 'Equilateral'
+        WHEN A = B OR B = C OR A = C THEN 'Isosceles'
+        ELSE 'Scalene'
+    END
+FROM TRIANGLES;
+```
+
+Get the list of top earning employees, and the number of employees that earn this amount
+
+```sql
+SELECT earnings, count(*) FROM Employee
+GROUP BY earnings
+ORDER BY earnings desc
+limit 1;
+```
+
+```sql
+SELECT COUNTRY.Continent, FLOOR(AVG(CITY.Population)) 
+FROM CITY INNER JOIN COUNTRY 
+ON CITY.CountryCode=COUNTRY.Code
+GROUP BY COUNTRY.Continent;
+```
+
+## Book SQL
+
 ```sql
 SELECT CourseName, TeacherName FROM Courses, Teachers WHERE Courses.TeacherID = Teachers.TeacherID
 ```
