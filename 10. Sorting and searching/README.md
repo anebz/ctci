@@ -8,11 +8,29 @@
 
 Start at the beginning, swap the first two elements if the first is greater than the second. Go to the next pair and repeat, and so on until reaching the end of the array.
 
+```python
+nums = [2, 1, 4, 6, 3, 8, 0]
+for k in range(len(nums)-1):
+    for i in range(len(nums) - k - 1):
+        if nums[i] > nums[i+1]:
+            nums[i], nums[i+1] = nums[i+1], nums[i]
+```
+
 ### Selection sort
 
 > Runtime O(n<sup>2</sup>) average and worst case. Memory O(1)
 
-Simple but inefficient. Find the smallest element using a linear scan, move it to the front, swapping it with the first element. Then, find the second smallest and move it, doing a linear scan. And so on
+Simple but inefficient. Find the smallest element using a linear scan, move it to the front, swapping it with the first element. Then, find the second smallest and move it, doing a linear scan. And so on.
+
+```python
+nums = [2, 1, 4, 6, 3, 8, 0]
+for i in range(len(nums)):
+    min_pos = i
+    for j in range(i+1, len(nums)):
+        if nums[j] < nums[min_pos]:
+            min_pos = j
+    nums[i], nums[min_pos] = nums[min_pos], nums[i]
+```
 
 ### Merge sort
 
@@ -24,7 +42,43 @@ When merging, copy all the elements from the target array segment into a helper 
 
 Java algorithm in book.
 
+```python
+def merge_sort(arr):
+    if len(arr) > 1:
+
+        mid = len(arr)//2
+        left = arr[:mid]
+        right = arr[mid:]
+
+        merge_sort(left)
+        merge_sort(right)
+
+        i, j, k = 0, 0, 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+        
+        while i < len(left):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+        
+        while j < len(right):
+            arr[k] = right[j]
+            j += 1
+            k += 1
+    
+    return arr
+```
+
 ### Quick sort
+
+Similar to merge sort, divide and conquer.
 
 > Runtime O(n log(n)) average, O(n<sup>2</sup>) worst case. Memory O(n log(n))
 
@@ -83,7 +137,7 @@ def binarySearch(arr, x):
     l = 0
     r = len(arr) - 1
     while l <= r:
-        mid = l + (r - l) // 2;
+        mid = l + (r - l) // 2
         if arr[mid] == x:
             return mid
   
